@@ -13,6 +13,7 @@ public class MiddleOfTheLinkedList {
         return head;
     }
 
+    //TortoiseHare Method
     private static Node<Integer> findMid(Node<Integer> head ){
         Node<Integer> slow = head;
         Node<Integer> fast = head;

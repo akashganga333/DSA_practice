@@ -18,6 +18,28 @@ public class DetectALoopInLL {
         return false;
     }
 
+    //return the position of node where the cycle begins
+
+    private static int detectLoopAndReturnPosition(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow==fast){
+                slow = head;
+                int pos = 0;
+                while(slow!=fast){
+                    fast = fast.next;
+                    slow = slow.next;
+                    pos++;
+                }
+                return pos;
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         Node<Integer> first = new Node<>(3);
         Node<Integer> second = new Node<>(2);
@@ -28,6 +50,7 @@ public class DetectALoopInLL {
         third.next = fourth;
         fourth.next = second;
         System.out.println(detectLoop(first));
+        System.out.println(detectLoopAndReturnPosition(first));
 
 
     }
